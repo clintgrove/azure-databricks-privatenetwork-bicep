@@ -48,13 +48,13 @@ param requiredNsgRules string = 'NoAzureDatabricksRules'
 param vnetCidr string = '10.179.0.0/16'
 
 @description('The name of the virtual network to create.')
-param vnetName string
+param vnetName string = 'clintvnet99'
 
 @description('The name of the subnet to create the private endpoint in.')
 param PrivateEndpointSubnetName string = 'default'
 
 @description('The name of the Azure Databricks workspace to create.')
-param workspaceName string = 'default'
+param workspaceName string = 'clintdbr99'
 
 var managedResourceGroupName = 'databricks-rg-${workspaceName}-${uniqueString(workspaceName, resourceGroup().id)}'
 var trimmedMRGName = substring(managedResourceGroupName, 0, min(length(managedResourceGroupName), 90))
