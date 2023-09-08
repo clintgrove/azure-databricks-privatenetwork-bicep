@@ -12,6 +12,9 @@ param workspaceName string = 'clintdbr99'
   'premium'
 ])
 param pricingTier string = 'premium'
+
+param vnetNamePassthru string = 'clintvnet99'
+
 module databricksworkspace './databricksvnetinjection.bicep' = { 
   name: workspaceName
   params: { 
@@ -19,7 +22,21 @@ module databricksworkspace './databricksvnetinjection.bicep' = {
     workspaceName: workspaceName
     disablePublicIp: disablePublicIp
     pricingTier: pricingTier
-
+    vnetName : vnetNamePassthru
   }
 
 }
+
+module vmachine './virtualmachine.bicep' = { 
+  name: 'clintvm99'
+  params: { 
+    location: location
+    vmName: 'clintvm99'
+    virtualNetworkNameParam : vnetNamePassthru
+    adminPassword: 'd_dfd3423Waff'
+  }
+  dependsOn: [
+    databricksworkspace
+  ]
+}
+

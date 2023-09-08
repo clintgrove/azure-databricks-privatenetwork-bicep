@@ -48,7 +48,7 @@ param requiredNsgRules string = 'NoAzureDatabricksRules'
 param vnetCidr string = '10.179.0.0/16'
 
 @description('The name of the virtual network to create.')
-param vnetName string = 'databricks-vnet'
+param vnetName string
 
 @description('The name of the subnet to create the private endpoint in.')
 param PrivateEndpointSubnetName string = 'default'
@@ -342,4 +342,4 @@ resource pvtEndpointDnsGroup_browserAuth 'Microsoft.Network/privateEndpoints/pri
   ]
 }
 
-
+output vnetId string = vnet.id
