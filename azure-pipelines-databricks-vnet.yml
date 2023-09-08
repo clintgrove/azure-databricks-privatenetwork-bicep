@@ -8,7 +8,7 @@ trigger:
 parameters:
  - name: Environment
    type: string
-   default: 'Test'
+   default: 'Dev'
    values:
      - Dev
      - Test
