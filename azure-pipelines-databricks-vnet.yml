@@ -1,0 +1,46 @@
+# Pipeline to deply databricks in private virtual network
+# Clint Grove. September 2023
+
+
+trigger:
+- none
+
+parameters:
+ - name: Environment
+   type: string
+   default: 'Test'
+   values:
+     - Dev
+     - Test
+     - Uat
+
+
+variables:
+  - group: ${{parameters.Environment}}-vars
+  - name: vmImageName
+    value: 'ubuntu-latest'
+  - name: azureServiceConnection
+    value: 'bloom-connect-vse'
+  - name: resourceGroupName
+    value: 'databricks-vnetinjection-idea'
+  - name: location  
+    value: 'uksouth'
+  - name: templateFile  
+    value: './centraldeploy.bicep'
+
+pool:
+  vmImage: $(vmImageName)
+
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: '$(azureServiceConnection)'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: '$(resourceGroupName)'
+    location: '$(location)'
+    templateLocation: 'Linked artifact'
+    csmFile: '$(templateFile)'
+    overrideParameters: '-VMadminPassword $(vmpassword_devops_library)'
+    deploymentMode: 'Incremental'
+    deploymentName: 'DeployPipelineTemplate'

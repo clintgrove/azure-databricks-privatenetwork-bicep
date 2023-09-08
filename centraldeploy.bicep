@@ -15,6 +15,10 @@ param pricingTier string = 'premium'
 
 param vnetNamePassthru string = 'clintvnet99'
 
+@minLength(12)
+@secure()
+param VMadminPassword string 
+
 module databricksworkspace './databricksvnetinjection.bicep' = { 
   name: workspaceName
   params: { 
@@ -33,7 +37,7 @@ module vmachine './virtualmachine.bicep' = {
     location: location
     vmName: 'clintvm99'
     virtualNetworkNameParam : vnetNamePassthru
-    adminPassword: 'd_dfd3423Waff'
+    adminPassword: VMadminPassword
   }
   dependsOn: [
     databricksworkspace
