@@ -5,7 +5,7 @@ param adminUsername string = 'clintgrove'
 @description('Password for the Virtual Machine.')
 @minLength(12)
 @secure()
-param adminPassword string = 'SpinMC!2021databricks'
+param adminPassword string 
 
 @description('Unique DNS Name for the Public IP used to access the Virtual Machine.')
 param dnsLabelPrefix string = toLower('${vmName}-${uniqueString(resourceGroup().id, vmName)}-bicepvm1')

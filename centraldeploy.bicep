@@ -3,7 +3,7 @@
 param location string = resourceGroup().location
 
 @description('DATABRICKS - Specifies whether to deploy Azure Databricks workspace with Secure Cluster Connectivity (No Public IP) enabled or not')
-param disablePublicIp bool = false
+param disablePublicIp bool = true
 @description('DATABRICKS - The name of the Azure Databricks workspace to create.')
 param workspaceName string = 'clintdbr99'
 @description('DATABRICKS - The pricing tier of workspace.')
@@ -12,7 +12,7 @@ param workspaceName string = 'clintdbr99'
   'premium'
 ])
 param pricingTier string = 'premium'
-module databricksworkspace './databricks.bicep' = { 
+module databricksworkspace './databricksvnetinjection.bicep' = { 
   name: workspaceName
   params: { 
     location: location
