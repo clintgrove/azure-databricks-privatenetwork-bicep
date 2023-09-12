@@ -241,6 +241,10 @@ resource workspace 'Microsoft.Databricks/workspaces@2023-02-01' = {
 }
 
 resource privateEndpoint 'Microsoft.Network/privateEndpoints@2021-08-01' = {
+  dependsOn: [
+    workspace
+    vnet
+  ]
   name: privateEndpointName
   location: location
   properties: {
@@ -264,6 +268,10 @@ resource privateEndpoint 'Microsoft.Network/privateEndpoints@2021-08-01' = {
 //this is necessary so that you can log onto the databricks workspace from within the VM
 //it needs a SSO callback. See this documentation for details https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/private-link-simplified#diagrams
 resource privateEndpoint_browserAuth 'Microsoft.Network/privateEndpoints@2021-08-01' = {
+  dependsOn: [
+    workspace
+    vnet
+  ]
   name: privateEndpointNameBrowserAuth
   location: location
   properties: {
