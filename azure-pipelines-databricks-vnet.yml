@@ -1,6 +1,7 @@
 # Pipeline to deply databricks in private virtual network
-# Clint Grove. September 2023
+# Clint Grove. September 2023. I have deployed this pipeline to my own Azure subscription and it works.
 
+#
 
 trigger:
 - none
