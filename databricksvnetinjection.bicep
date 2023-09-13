@@ -269,8 +269,11 @@ resource privateEndpoint 'Microsoft.Network/privateEndpoints@2021-08-01' = {
 //it needs a SSO callback. See this documentation for details https://learn.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/private-link-simplified#diagrams
 resource privateEndpoint_browserAuth 'Microsoft.Network/privateEndpoints@2021-08-01' = {
   dependsOn: [
-    workspace
+    privateEndpoint
     vnet
+    workspace
+    privateDnsZone
+    pvtEndpointDnsGroup
   ]
   name: privateEndpointNameBrowserAuth
   location: location
@@ -347,6 +350,9 @@ resource pvtEndpointDnsGroup_browserAuth 'Microsoft.Network/privateEndpoints/pri
   }
   dependsOn: [
     privateEndpoint_browserAuth
+    privateDnsZone
+    pvtEndpointDnsGroup
+    privateDnsZoneName_privateDnsZoneName_link
   ]
 }
 
