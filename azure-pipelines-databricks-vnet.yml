@@ -42,6 +42,6 @@ steps:
     location: '$(location)'
     templateLocation: 'Linked artifact'
     csmFile: '$(templateFile)'
-    overrideParameters: '-VMadminPassword $(vmpassword_devops_library)'
+    overrideParameters: '-VMadminPassword ${{ variables.vmpassword-devops-library }}'
     deploymentMode: 'Incremental'
     deploymentName: 'DeployPipelineTemplate'
