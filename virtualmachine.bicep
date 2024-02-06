@@ -1,6 +1,6 @@
 
 @description('Username for the Virtual Machine.')
-param adminUsername string = 'VMAdmin'
+param adminUsername string = 'VMloginrdp'
 
 @description('Password for the Virtual Machine.')
 @minLength(12)
