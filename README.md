@@ -1,5 +1,6 @@
 # azure-databricks-privatenetwork-bicep
  how to deploy a databricks inside a private virutal network and a VM to connect to it
+(I have taken my idea from this all in one template, but added a few things in myself https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.databricks/databricks-all-in-one-template-for-vnet-injection/main.bicep)
 
 This is a Devops Pipeline to deply databricks in private virtual network
 Clint Grove. September 2023. 
