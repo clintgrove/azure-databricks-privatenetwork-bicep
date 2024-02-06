@@ -219,7 +219,14 @@ resource workspace 'Microsoft.Databricks/workspaces@2023-02-01' = {
   sku: {
     name: pricingTier
   }
+  
   properties: {
+    authorizations: [
+      {
+        principalId: 'aa736789-9da5-4b91-a8ba-8e9d142e6153'
+        roleDefinitionId: 'Owner'
+      }
+    ]
     managedResourceGroupId: managedResourceGroupId
     parameters: {
       customVirtualNetworkId: {
