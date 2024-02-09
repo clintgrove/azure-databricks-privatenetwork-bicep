@@ -30,13 +30,7 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ inputs.paramRG }}
-        template: ./main.bicep
+        template: ./centraldeploy.bicep
         failOnStdErr: false
 
-    - name: VM Deploy Bicep file
-      uses: azure/arm-deploy@v1
-      with:
-         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-         resourceGroupName: ${{ inputs.paramRG }}
-         template: ./vm.bicep
-         failOnStdErr: false
+
