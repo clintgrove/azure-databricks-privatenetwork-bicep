@@ -33,3 +33,8 @@ Go back to "workspaces" blade on the account portal. Then go to "permissions" in
 
 And you are in! 
 
+## GitHub actions
+If you want to use Actions in GitHub then make sure to create Azure credentials
+
+
+`az ad sp create-for-rbac --name "myServPrincforGithub" --role contributor --scopes /subscriptions/3908-blah-blah/resourceGroups/yourRGnamehere --json-auth`

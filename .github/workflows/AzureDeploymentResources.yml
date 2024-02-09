@@ -1,4 +1,4 @@
-name: Deploy Bicep file
+name: Deploy Bicep file to create Azure Resources
 on:
   workflow_dispatch:
     inputs:
@@ -6,6 +6,10 @@ on:
         description: 'Parameter for resource group'
         required: true
         default: 'dbr-private-rg-1'
+      subscriptionId:
+        description: 'Subscription ID'
+        required: true
+        default: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
   push:
     branches:
       - main
@@ -26,15 +30,15 @@ jobs:
     - name: Databricks Deploy Bicep file
       uses: azure/arm-deploy@v1
       with:
-        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: ${{ secrets.AZURE_RG }}
+        subscriptionId: subscriptionId
+        resourceGroupName: paramRG
         template: ./main.bicep
         failOnStdErr: false
 
     - name: VM Deploy Bicep file
       uses: azure/arm-deploy@v1
       with:
-         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-         resourceGroupName: ${{ secrets.AZURE_RG }}
+         subscriptionId: subscriptionId
+         resourceGroupName: paramRG
          template: ./vm.bicep
          failOnStdErr: false
