@@ -221,12 +221,12 @@ resource workspace 'Microsoft.Databricks/workspaces@2023-02-01' = {
   }
   
   properties: {
-    roleAssignments: [
-      {
-        principalId: 'aa736789-9da5-4b91-a8ba-8e9d142e6153'
-        roleDefinitionId: 'Owner'
-      }
-    ]
+    // roleAssignments: [
+    //   {
+    //     principalId: 'aa736789-9da5-4b91-a8ba-8e9d142e6153'
+    //     roleDefinitionId: 'Owner'
+    //   }
+    // ]
     managedResourceGroupId: managedResourceGroupId
     parameters: {
       customVirtualNetworkId: {
