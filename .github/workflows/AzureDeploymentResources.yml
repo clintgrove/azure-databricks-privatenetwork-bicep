@@ -6,10 +6,6 @@ on:
         description: 'Parameter for resource group'
         required: true
         default: 'dbr-private-rg-1'
-      subscriptionId:
-        description: 'Subscription ID'
-        required: true
-        default: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
   push:
     branches:
       - main
@@ -30,7 +26,7 @@ jobs:
     - name: Databricks Deploy Bicep file
       uses: azure/arm-deploy@v1
       with:
-        subscriptionId: subscriptionId
+        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: paramRG
         template: ./main.bicep
         failOnStdErr: false
@@ -38,7 +34,7 @@ jobs:
     - name: VM Deploy Bicep file
       uses: azure/arm-deploy@v1
       with:
-         subscriptionId: subscriptionId
+         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
          resourceGroupName: paramRG
          template: ./vm.bicep
          failOnStdErr: false
