@@ -27,7 +27,7 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        resourceGroupName: paramRG
+        resourceGroupName: ${{ github.event.inputs.paramRG }}
         template: ./main.bicep
         failOnStdErr: false
 
@@ -35,6 +35,6 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-         resourceGroupName: paramRG
+         resourceGroupName: ${{ github.event.inputs.paramRG }}
          template: ./vm.bicep
          failOnStdErr: false
