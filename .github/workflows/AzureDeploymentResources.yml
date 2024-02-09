@@ -12,6 +12,7 @@ on:
     
 jobs:
   build-and-deploy:
+    environment: Development
     runs-on: ubuntu-latest
     steps:
     - name: Print the input RG name to STDOUT
