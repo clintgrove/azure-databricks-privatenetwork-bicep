@@ -36,7 +36,7 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ vars.RESOURCEGROUPNAME }}
         template: ./centraldeploy.bicep
-        parameters: 'vmAdminPassword= ${{ secrets.VM_PASSWORD_ENVSD }}'
+        parameters: 'VMadminPassword= ${{ secrets.VM_PASSWORD_ENVSD }}'
         failOnStdErr: false
 
 
