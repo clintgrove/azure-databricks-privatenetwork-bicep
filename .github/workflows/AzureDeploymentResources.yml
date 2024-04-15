@@ -1,11 +1,11 @@
 name: Deploy Bicep file to create Azure Resources
 on:
-  workflow_dispatch:
-    inputs:
-      paramRG:
-        description: 'Parameter for resource group'
-        required: true
-        default: 'dbr-private-rg-2'
+  # workflow_dispatch:
+  #   inputs:
+  #     paramRG:
+  #       description: 'Parameter for resource group'
+  #       required: true
+  #       default: 'dbr-private-rg-2'
   push:
     branches:
       - main
