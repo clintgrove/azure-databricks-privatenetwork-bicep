@@ -1,17 +1,27 @@
 name: Deploy Bicep file to create Azure Resources
 on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+    secrets:
+      VM_PASSWORD_ENVSD:
+        required: true
   # workflow_dispatch:
   #   inputs:
   #     paramRG:
   #       description: 'Parameter for resource group'
   #       required: true
   #       default: 'dbr-private-rg-2'
+
   push:
     branches:
       - main
     
 jobs:
-  build-and-deploy:
+  deploy:
+    name: buildanddeploy
     environment: Development
     runs-on: ubuntu-latest
     steps:
@@ -32,7 +42,6 @@ jobs:
     - name: Databricks Deploy Bicep file
       uses: azure/arm-deploy@v1
       with:
-        environment: Development
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ vars.RESOURCEGROUPNAME }}
         template: ./centraldeploy.bicep
