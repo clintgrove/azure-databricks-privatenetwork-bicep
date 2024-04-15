@@ -5,7 +5,7 @@ on:
       paramRG:
         description: 'Parameter for resource group'
         required: true
-        default: 'dbr-private-rg-1'
+        default: 'dbr-private-rg-2'
   push:
     branches:
       - main
