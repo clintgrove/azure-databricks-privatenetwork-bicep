@@ -27,7 +27,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: CreateRG
-      run: az group create --name  ${{ github.event.inputs.paramRG }} --location 'uksouth'
+      run: az group create --name  ${{ vars.RESOURCEGROUPNAME }} --location 'uksouth'
     
     - name: Databricks Deploy Bicep file
       uses: azure/arm-deploy@v1
