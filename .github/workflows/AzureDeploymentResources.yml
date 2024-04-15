@@ -32,9 +32,11 @@ jobs:
     - name: Databricks Deploy Bicep file
       uses: azure/arm-deploy@v1
       with:
+        environment: Development
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ vars.RESOURCEGROUPNAME }}
         template: ./centraldeploy.bicep
+        parameters: 'vmAdminPassword= ${{ secrets.VM_PASSWORD_ENVSD }}'
         failOnStdErr: false
 
 

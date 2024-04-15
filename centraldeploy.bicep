@@ -15,17 +15,17 @@ param pricingTier string = 'premium'
 
 param vnetNamePassthru string = 'clintvnet99'
 
-// @minLength(12)
-// @secure()
-// param VMadminPassword string 
+@minLength(12)
+@secure()
+param VMadminPassword string 
 
-param subscriptionId string = '1943f6e4-c483-433c-a82b-cc02e45ad73c'
-param kvResourceGroup string = 'datagame'
+// param subscriptionId string = '1943f6e4-c483-433c-a82b-cc02e45ad73c'
+// param kvResourceGroup string = 'datagame'
 
-resource kv 'Microsoft.KeyVault/vaults@2023-02-01' existing = {
-  name: 'kv-clint-generic'
-  scope: resourceGroup(subscriptionId, kvResourceGroup )
-}
+// resource kv 'Microsoft.KeyVault/vaults@2023-02-01' existing = {
+//   name: 'kv-clint-generic'
+//   scope: resourceGroup(subscriptionId, kvResourceGroup )
+// }
 
 module databricksworkspace './databricksvnetinjection.bicep' = { 
   name: workspaceName
@@ -45,7 +45,7 @@ module vmachine './virtualmachine.bicep' = {
     location: location
     vmName: 'clintvm99'
     virtualNetworkNameParam : vnetNamePassthru
-    adminPassword: kv.getSecret('vmpassword-devops-library')
+    adminPassword: VMadminPassword  // kv.getSecret('vmpassword-devops-library')
   }
   dependsOn: [
     databricksworkspace
