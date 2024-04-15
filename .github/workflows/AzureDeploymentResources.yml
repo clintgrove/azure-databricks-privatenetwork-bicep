@@ -8,6 +8,10 @@ on:
     secrets:
       VM_PASSWORD_ENVSD:
         required: true
+      AZURE_CREDENTIALS:
+        required: true
+      RESOURCEGROUPNAME:
+        required: true
   # workflow_dispatch:
   #   inputs:
   #     paramRG:

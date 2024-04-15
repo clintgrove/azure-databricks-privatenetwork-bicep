@@ -10,3 +10,6 @@ jobs:
        environment: Development
      secrets:
        VM_PASSWORD_ENVSD: ${{ secrets.VM_PASSWORD_ENVSD }}
+       RESOURCEGROUPNAME: ${{ vars.RESOURCEGROUPNAME }}
+       AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+
