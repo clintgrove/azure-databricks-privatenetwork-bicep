@@ -17,7 +17,7 @@ param vnetNamePassthru string = 'clintvnet99'
 
 @minLength(12)
 @secure()
-param VMadminPassword string 
+param VMadminPassword string = newGuid()
 
 // param subscriptionId string = '1943f6e4-c483-433c-a82b-cc02e45ad73c'
 // param kvResourceGroup string = 'datagame'

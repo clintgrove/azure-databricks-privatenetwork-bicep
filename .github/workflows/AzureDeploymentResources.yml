@@ -12,13 +12,12 @@ on:
         required: true
       RESOURCEGROUPNAME:
         required: true
-  # workflow_dispatch:
-  #   inputs:
-  #     paramRG:
-  #       description: 'Parameter for resource group'
-  #       required: true
-  #       default: 'dbr-private-rg-2'
-
+  workflow_dispatch:
+    inputs:
+      pss:
+        description: 'P'
+        required: true
+        default: 
   push:
     branches:
       - main
@@ -49,7 +48,7 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ vars.RESOURCEGROUPNAME }}
         template: ./centraldeploy.bicep
-        parameters: 'VMadminPassword= ${{ secrets.VM_PASSWORD_ENVSD }}'
+        #parameters: 'VMadminPassword= '
         failOnStdErr: false
 
 
